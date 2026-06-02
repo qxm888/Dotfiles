@@ -11,7 +11,7 @@ hl.bind(mainMod .. " + CTRL + RETURN",  hl.dsp.exec_cmd("qs -c noctalia-shell ip
 
 -- ========== 剪贴板历史 ==========
 
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("cliphist list | fuzzel --dmenu --prompt=Clipboard | cliphist decode | wl-copy"))
+hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("~/opencode/scripts/cliphist-dmenu.sh"))
 
 -- ========== 截图 ==========
 
@@ -21,6 +21,7 @@ hl.bind("CTRL + PRINT",   hl.dsp.exec_cmd("hyprshot -m output --clipboard-only")
 hl.bind(mainMod .. " + PRINT",      hl.dsp.exec_cmd("hyprshot -m region -o ~/screenshot"))
 hl.bind(mainMod .. " + SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m window -o ~/screenshot"))
 hl.bind(mainMod .. " + CTRL + PRINT",  hl.dsp.exec_cmd("hyprshot -m output -o ~/screenshot"))
+hl.bind(mainMod .. " + ALT + PRINT",  hl.dsp.exec_cmd("~/opencode/scripts/hyprshot-delay.sh 3"))
 
 -- ========== 窗口行为 ==========
 
