@@ -41,21 +41,39 @@
 window#waybar {
     background: transparent;
     border: none;
-    border-radius: 12px;
     color: @text;
 }
 
-/* --- Left modules --- */
 .modules-left > widget:first-child {
-    margin-left: 10px;
+    margin-left: 4px;
 }
 
-/* Launcher */
+.modules-right > widget:last-child {
+    margin-right: 4px;
+}
+
+/* --- Module backgrounds (Noctalia-lite) --- */
+#clock,
+#cpu,
+#memory,
+#custom-gpu,
+#custom-window,
+#mpris,
+#network,
+#bluetooth,
+#custom-notification,
+#pulseaudio {
+    background: rgba(49, 50, 68, 0.35);
+    padding: 0 8px;
+    margin: 2px 2px;
+    border-radius: 8px;
+}
+
 #custom-launcher {
     color: @icon-blue;
     font-size: 15px;
     padding: 0 6px;
-    margin: 0 2px;
+    margin: 2px 2px;
 }
 
 #custom-launcher:hover {
@@ -65,32 +83,19 @@ window#waybar {
 /* Clock */
 #clock {
     color: @text-pink;
-    padding: 0 8px;
 }
 
-/* CPU - color levels via class */
-#custom-cpu {
-    padding: 0 6px;
-    margin: 0 2px;
-    border-radius: 8px;
-}
-
-#custom-cpu.low      { color: @green; }
-#custom-cpu.medium   { color: @teal; }
-#custom-cpu.high     { color: @yellow; }
-#custom-cpu.critical {
+/* CPU - native module states */
+#cpu { color: @green; }
+#cpu.warning { color: @yellow; }
+#cpu.critical {
     color: @red;
     background: rgba(243, 139, 168, 0.15);
     border-radius: 8px;
 }
 
-/* GPU - color levels via class */
-#custom-gpu {
-    padding: 0 6px;
-    margin: 0 2px;
-    border-radius: 8px;
-}
-
+/* GPU - custom script classes */
+#custom-gpu { padding: 0 8px; margin: 2px 2px; border-radius: 8px; }
 #custom-gpu.low      { color: @green; }
 #custom-gpu.medium   { color: @teal; }
 #custom-gpu.high     { color: @yellow; }
@@ -100,17 +105,10 @@ window#waybar {
     border-radius: 8px;
 }
 
-/* Memory - color levels via class */
-#custom-memory {
-    padding: 0 6px;
-    margin: 0 2px;
-    border-radius: 8px;
-}
-
-#custom-memory.low      { color: @green; }
-#custom-memory.medium   { color: @teal; }
-#custom-memory.high     { color: @yellow; }
-#custom-memory.critical {
+/* Memory - native module states */
+#memory { color: @green; }
+#memory.warning { color: @yellow; }
+#memory.critical {
     color: @red;
     background: rgba(243, 139, 168, 0.15);
     border-radius: 8px;
@@ -119,8 +117,6 @@ window#waybar {
 /* Window */
 #custom-window {
     color: @text-pink;
-    padding: 0 8px;
-    margin: 0 4px;
 }
 
 /* Workspaces */
@@ -135,16 +131,9 @@ window#waybar {
     font-weight: bold;
 }
 
-/* --- Right modules --- */
-.modules-right > widget:last-child {
-    margin-right: 10px;
-}
-
 /* MPRIS / Player */
 #mpris {
     color: @text-pink;
-    padding: 0 6px;
-    margin: 0 2px;
 }
 
 #mpris.paused {
@@ -152,30 +141,13 @@ window#waybar {
 }
 
 /* Network */
-#network {
-    color: @icon-blue;
-    padding: 0 6px;
-    margin: 0 2px;
-}
-
-#network.disconnected {
-    color: @red;
-}
+#network { color: @icon-blue; }
+#network.disconnected { color: @red; }
 
 /* Bluetooth */
-#bluetooth {
-    color: @icon-blue;
-    padding: 0 6px;
-    margin: 0 2px;
-}
-
-#bluetooth.off {
-    color: @overlay0;
-}
-
-#bluetooth.disconnected {
-    color: @overlay0;
-}
+#bluetooth { color: @icon-blue; }
+#bluetooth.off { color: @overlay0; }
+#bluetooth.disconnected { color: @overlay0; }
 
 /* Tray */
 #tray {
@@ -201,8 +173,6 @@ tray > * {
 /* Notification */
 #custom-notification {
     color: @icon-blue;
-    padding: 0 6px;
-    margin: 0 2px;
 }
 
 #custom-notification.has-notifications {
@@ -210,15 +180,8 @@ tray > * {
 }
 
 /* Pulseaudio */
-#pulseaudio {
-    color: @icon-blue;
-    padding: 0 6px;
-    margin: 0 2px;
-}
-
-#pulseaudio.muted {
-    color: @overlay2;
-}
+#pulseaudio { color: @icon-blue; }
+#pulseaudio.muted { color: @overlay2; }
 
 /* Tooltips */
 tooltip {

@@ -11,9 +11,9 @@
     "modules-left": [
         "custom/launcher",
         "clock",
-        "custom/cpu",
+        "cpu",
         "custom/gpu",
-        "custom/memory",
+        "memory",
         "custom/window"
     ],
     "modules-center": [
@@ -39,10 +39,12 @@
         "tooltip-format": "<big>{:%Y年%B%d日}</big>\n<tt><small>{calendar}</small></tt>"
     },
 
-    "custom/cpu": {
-        "exec": "~/.config/waybar/scripts/cpu.sh",
-        "interval": 2,
-        "return-type": "json"
+    "cpu": {
+        "format": "󰍛 {usage}%",
+        "states": {
+            "warning": 60,
+            "critical": 85
+        }
     },
 
     "custom/gpu": {
@@ -51,10 +53,12 @@
         "return-type": "json"
     },
 
-    "custom/memory": {
-        "exec": "~/.config/waybar/scripts/memory.sh",
-        "interval": 2,
-        "return-type": "json"
+    "memory": {
+        "format": "󰘚 {percentage}%",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
     },
 
     "custom/window": {
@@ -76,9 +80,10 @@
     },
 
     "mpris": {
-        "format": "{artist} - {title}",
-        "format-playing": "{artist} - {title}",
+        "format": "{player_icon} {artist} - {title}",
+        "format-playing": "{player_icon} {artist} - {title}",
         "format-paused": "{status_icon} {artist} - {title}",
+        "format-stopped": "",
         "max-length": 35,
         "tooltip-format": "{title} - {artist}\n{album}",
         "on-click": "playerctl play-pause",
