@@ -36,7 +36,8 @@
 
     "clock": {
         "format": "{:%m/%d %a %H:%M}",
-        "tooltip-format": "<big>{:%Y年%B%d日}</big>\n<tt><small>{calendar}</small></tt>"
+        "tooltip-format": "<big>{:%Y年%B%d日}</big>\n<tt><small>{calendar}</small></tt>",
+        "locale": "zh_CN.UTF-8"
     },
 
     "cpu": {
