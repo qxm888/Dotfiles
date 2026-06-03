@@ -14,7 +14,7 @@ hl.monitor({
     mode     = "1920x1080@60",
     position = "0x0",
     scale    = "1",
-    transform = 1, -- 顺时针旋转 270°
+    transform = 3, -- 顺时针旋转 270°
 })
 --左侧横位
 --hl.monitor({

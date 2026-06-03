@@ -5,7 +5,7 @@ hl.config({
         gaps_in  = 5,
         gaps_out = 10,
 
-        border_size = 3,
+        border_size = 2,
 
         col = {
             active_border   = "rgb(255,192,203)",  -- 粉色边框
@@ -22,8 +22,8 @@ hl.config({
         rounding       = 7,
         rounding_power = 2,
 
-        active_opacity   = 0.9,
-        inactive_opacity = 0.8,
+        active_opacity   = 0.96,
+        inactive_opacity = 0.90,
         fullscreen_opacity = 1.0,
 
         shadow = {
@@ -35,8 +35,8 @@ hl.config({
 
         blur = {
             enabled   = true,
-            size      = 3,
-            passes    = 1,
+            size      = 6,
+            passes    = 2,
             vibrancy  = 0.1696,
         },
     },

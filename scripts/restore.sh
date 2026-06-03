@@ -61,12 +61,13 @@ cd "$DOTFILES_DIR"
 # ------- 安装依赖包 -------
 info "以下软件包将被安装:"
 echo ""
-echo "  [桌面] hyprland waybar hyprpaper hyprshot hyprlock hypridle xdg-desktop-portal-hyprland"
+echo "  [桌面] hyprland waybar hyprpaper hyprshot hyprlock hypridle swaync xdg-desktop-portal-hyprland"
 echo "  [终端] kitty fish"
 echo "  [输入] fcitx5 fcitx5-rime fcitx5-configtool fcitx5-qt fcitx5-gtk"
-echo "  [工具] btop fastfetch wl-clipboard cliphist thunar ffmpegthumbnailer"
-echo "  [声音] pipewire pipewire-pulse wireplumber playerctl"
+echo "  [工具] btop fastfetch wl-clipboard cliphist thunar ffmpegthumbnailer rofi"
+echo "  [声音] pipewire pipewire-pulse wireplumber playerctl pwvucontrol"
 echo "  [亮度] brightnessctl"
+echo "  [网络] networkmanager nm-connection-editor blueman"
 echo "  [外观] nerd-fonts oh-my-posh qt5ct qt6ct kvantum"
 echo "  [截图] grim slurp swappy"
 echo "  [通知] dunst libnotify polkit-kde-agent"
@@ -97,8 +98,10 @@ if ask "是否安装以上软件包？(使用 pacman + paru/yay)"; then
         ttf-jetbrains-mono-nerd noto-fonts-cjk noto-fonts-emoji
         qt5ct qt6ct kvantum
         grim slurp swappy
-        dunst libnotify polkit-kde-agent
-        networkmanager
+        swaync libnotify polkit-kde-agent
+        networkmanager nm-connection-editor
+        blueman
+        rofi
         unzip tar wget curl git
     )
 
@@ -109,7 +112,7 @@ if ask "是否安装以上软件包？(使用 pacman + paru/yay)"; then
     }
 
     if [[ -n $AUR_HELPER ]]; then
-        AUR_PKGS=(oh-my-posh-bin hyprshot hyprlock hypridle)
+        AUR_PKGS=(oh-my-posh-bin walker-bin pwvucontrol)
         info "正在使用 $AUR_HELPER 安装 AUR 包..."
         $AUR_HELPER -S --needed --noconfirm "${AUR_PKGS[@]}" 2>/dev/null || true
     else
@@ -142,6 +145,7 @@ echo ""
 info "========== 开始恢复配置文件 =========="
 
 restore_dir "$DOTFILES_DIR/hypr"      "$HOME/.config/hypr"
+restore_dir "$DOTFILES_DIR/waybar"    "$HOME/.config/waybar"
 restore_dir "$DOTFILES_DIR/kitty"     "$HOME/.config/kitty"
 restore_dir "$DOTFILES_DIR/fish"      "$HOME/.config/fish"
 restore_dir "$DOTFILES_DIR/ohmyposh"  "$HOME/.config/ohmyposh"

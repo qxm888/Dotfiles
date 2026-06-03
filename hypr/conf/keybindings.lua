@@ -7,7 +7,13 @@ local mainMod = "SUPER"
 hl.bind(mainMod .. " + RETURN",         hl.dsp.exec_cmd("kitty"))
 hl.bind(mainMod .. " + B",              hl.dsp.exec_cmd("firefox"))
 hl.bind(mainMod .. " + E",              hl.dsp.exec_cmd("thunar"))
-hl.bind(mainMod .. " + CTRL + RETURN",  hl.dsp.exec_cmd("qs -c noctalia-shell ipc call launcher toggle"))
+hl.bind(mainMod .. " + CTRL + RETURN",  hl.dsp.exec_cmd("walker"))
+
+-- ========== 壁纸切换 ==========
+
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("~/.config/waybar/scripts/wallpaper-switch.sh"))
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("~/.config/waybar/scripts/wallpaper-auto.sh"))
+hl.bind(mainMod .. " + CTRL + W", hl.dsp.exec_cmd("~/.config/waybar/scripts/wallpaper-pick.sh"))
 
 -- ========== 剪贴板历史 ==========
 
