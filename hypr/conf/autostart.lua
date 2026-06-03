@@ -6,6 +6,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("hyprpaper")
     hl.exec_cmd("waybar")
     hl.exec_cmd("swaync")
+    hl.exec_cmd("elephant")
     hl.exec_cmd("fcitx5")
 
     -- 剪贴板管理 (cliphist + 智能清空 + 收藏)
