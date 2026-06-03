@@ -112,7 +112,7 @@ if ask "是否安装以上软件包？(使用 pacman + paru/yay)"; then
     }
 
     if [[ -n $AUR_HELPER ]]; then
-        AUR_PKGS=(oh-my-posh-bin walker-bin pwvucontrol)
+        AUR_PKGS=(oh-my-posh-bin walker-bin pwvucontrol elephant-desktopapplications)
         info "正在使用 $AUR_HELPER 安装 AUR 包..."
         $AUR_HELPER -S --needed --noconfirm "${AUR_PKGS[@]}" 2>/dev/null || true
     else
