@@ -10,7 +10,7 @@
 
     "modules-left": [
         "custom/launcher",
-        "clock",
+        "custom/clock",
         "cpu",
         "custom/gpu",
         "memory",
@@ -34,10 +34,10 @@
         "tooltip-format": "Launcher (walker / rofi)"
     },
 
-    "clock": {
-        "format": "{:%m/%d %a %H:%M}",
-        "tooltip-format": "<big>{:%Y年%B%d日}</big>\n<tt><small>{calendar}</small></tt>",
-        "locale": "zh_CN.UTF-8"
+    "custom/clock": {
+        "exec": "~/.config/waybar/scripts/clock.sh",
+        "interval": 10,
+        "return-type": "json"
     },
 
     "cpu": {
