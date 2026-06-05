@@ -4,9 +4,9 @@
 hl.on("hyprland.start", function()
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
     hl.exec_cmd("hyprpaper")
+    hl.exec_cmd("bash -c 'sleep 1 && ~/.config/waybar/scripts/wallpaper-switch.sh'")
     hl.exec_cmd("waybar")
     hl.exec_cmd("swaync")
-    hl.exec_cmd("elephant")
     hl.exec_cmd("fcitx5")
 
     -- 剪贴板管理 (cliphist + 智能清空 + 收藏)
