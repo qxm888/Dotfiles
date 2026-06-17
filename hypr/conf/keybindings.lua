@@ -7,13 +7,13 @@ local mainMod = "SUPER"
 hl.bind(mainMod .. " + RETURN",         hl.dsp.exec_cmd("kitty"))
 hl.bind(mainMod .. " + B",              hl.dsp.exec_cmd("firefox"))
 hl.bind(mainMod .. " + E",              hl.dsp.exec_cmd("thunar"))
-hl.bind(mainMod .. " + CTRL + RETURN",  hl.dsp.exec_cmd("walker"))
-
+--hl.bind(mainMod .. " + CTRL + RETURN",  hl.dsp.exec_cmd("walker"))
+hl.bind(mainMod .. " + CTRL + RETURN",  hl.dsp.exec_cmd("qs -c noctalia-shell ipc call launcher toggle"))
 -- ========== 壁纸切换 ==========
 
-hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("~/.config/waybar/scripts/wallpaper-switch.sh"))
-hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("~/.config/waybar/scripts/wallpaper-auto.sh"))
-hl.bind(mainMod .. " + CTRL + W", hl.dsp.exec_cmd("~/.config/waybar/scripts/wallpaper-pick.sh"))
+--hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("~/.config/waybar/scripts/wallpaper-switch.sh"))
+--hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("~/.config/waybar/scripts/wallpaper-auto.sh"))
+--hl.bind(mainMod .. " + CTRL + W", hl.dsp.exec_cmd("~/.config/waybar/scripts/wallpaper-pick.sh"))
 
 -- ========== 剪贴板历史 ==========
 
@@ -27,7 +27,8 @@ hl.bind("CTRL + PRINT",   hl.dsp.exec_cmd("hyprshot -m output --clipboard-only")
 hl.bind(mainMod .. " + PRINT",      hl.dsp.exec_cmd("hyprshot -m region -o ~/screenshot"))
 hl.bind(mainMod .. " + SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m window -o ~/screenshot"))
 hl.bind(mainMod .. " + CTRL + PRINT",  hl.dsp.exec_cmd("hyprshot -m output -o ~/screenshot"))
-hl.bind(mainMod .. " + ALT + PRINT",  hl.dsp.exec_cmd("~/opencode/scripts/hyprshot-delay.sh 3"))
+hl.bind(mainMod .. " + ALT + PRINT",  hl.dsp.exec_cmd("~/opencode/scripts/hyprshot-delay.sh 5"))
+hl.bind("ALT + PRINT",  hl.dsp.exec_cmd("~/opencode/scripts/hyprshot-delay-region.sh 5"))
 
 -- ========== 窗口行为 ==========
 
