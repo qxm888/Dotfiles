@@ -57,6 +57,21 @@ ln -s ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
 ln -s ~/dotfiles/hypr/conf ~/.config/hypr/conf
 ```
 
+### 一键同步（推荐）
+
+```bash
+bash scripts/sync.sh                  # 同步 → 隐私扫描 → 提交 → 推送所有远程
+bash scripts/sync.sh -n               # 预览，不改文件、不提交
+bash scripts/sync.sh -m "改了键位"     # 自定义提交说明
+```
+
+脚本会按 `hypr/ kitty/ fish/ fcitx5/ btop/ fastfetch/ ohmyposh/ systemd/ shell/ scripts/`
+的映射把 `~/.config` 与家目录里的配置同步回仓库，先跑一遍**隐私/密钥扫描**
+（密码 / token / 私钥 / 公网 IP / 手机号），通过后自动 commit 并推送到 Gitee + GitHub 两个远程。
+误报写进 `.secretscan-ignore` 即可。
+
+> 源家目录默认由仓库位置推导（`<home>/opencode/<repo>` → `<home>`），可用 `-H` 覆盖。
+
 ### 自动恢复
 
 运行恢复脚本自动还原配置：
