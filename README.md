@@ -72,6 +72,17 @@ bash scripts/sync.sh -m "改了键位"     # 自定义提交说明
 
 > 源家目录默认由仓库位置推导（`<home>/opencode/<repo>` → `<home>`），可用 `-H` 覆盖。
 
+### 提交前自动扫描（防手滑把密码推上去）
+
+仓库自带 `.githooks/pre-commit`：`git commit` 前自动扫描暂存区，命中密码 / token /
+私钥 / 公网 IP / 手机号就阻断提交。新克隆后启用一次（`scripts/sync.sh` 会自动设置）：
+
+```bash
+git config core.hooksPath .githooks
+```
+
+手动扫描：`bash scripts/secretscan.sh`；确认真无害时 `git commit --no-verify` 可跳过。
+
 ### 自动恢复
 
 运行恢复脚本自动还原配置：
