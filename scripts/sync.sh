@@ -99,9 +99,22 @@ sync_dir scripts "$SRC_HOME/opencode/scripts"        # 已排除 sync/save/resto
 sync_file "scripts/auto-snapshots.sh" "$CONFIG/hypr/auto-snapshots.sh"
 
 if [[ $LAYOUT == gentoo && $DRY -eq 0 ]]; then
-    say "===== 2/4 同步本机 /etc 系统级配置（需要 root）====="
+    say "===== 2/4 同步本机 /etc 系统级配置 ====="
+    # 先用普通用户比对一遍，完全没变化就别弹密码框了
+    NEED_ROOT=0
+    rsync -a --dry-run -i --exclude='gnupg/' /etc/portage/ "$REPO/etc/portage/" 2>/dev/null | grep -q . && NEED_ROOT=1
+    for f in nftables.conf issue fstab sysctl.d/99-hardening.conf fail2ban/jail.d/gentoo.local \
+             default/ufw ufw/user.rules pam.d/login systemd/system/getty@.service.d/10-clear.conf; do
+        cmp -s "/etc/$f" "$REPO/etc/$f" 2>/dev/null || NEED_ROOT=1
+    done
+    K=$(ls -1 /etc/kernels/kernel-config-* 2>/dev/null | tail -1 || true)
+    [[ -n $K ]] && { cmp -s "$K" "$REPO/etc/kernels/$(basename "$K")" 2>/dev/null || NEED_ROOT=1; }
+
+    if [[ $NEED_ROOT -eq 0 ]]; then
+        ok "etc/ 无变化（跳过，不打扰 root）"
+    else
     as_root() { if [[ $EUID -eq 0 ]]; then "$@"; elif sudo -n true 2>/dev/null; then sudo "$@"; else pkexec "$@"; fi; }
-    if as_root bash -s -- "$REPO" <<'EOS'; then ok "etc/"
+    if as_root bash -s -- "$REPO" <<'EOS'; then ok "etc/ 已更新"
 set -e
 REPO="$1"
 mkdir -p "$REPO/etc/portage"
@@ -117,6 +130,7 @@ K=$(ls -1 /etc/kernels/kernel-config-* 2>/dev/null | tail -1 || true)
 [ -n "$K" ] && cp -a "$K" "$REPO/etc/kernels/$(basename "$K")"
 EOS
     else warn "/etc 同步失败（跳过，不影响后续）"; fi
+    fi
 fi
 
 say "===== 3/4 隐私与密钥扫描 ====="
