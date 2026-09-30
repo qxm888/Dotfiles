@@ -16,6 +16,7 @@ hl.env("XDG_CACHE_HOME", os.getenv("HOME") .. "/.cache")
 hl.env("LANG", "zh_CN.UTF-8")
 hl.env("LANGUAGE", "zh_CN:en_US")
 hl.env("LC_CTYPE", "zh_CN.UTF-8")
+hl.env("LC_ALL", "zh_CN.UTF-8")
 
 -- fcitx5 输入法
 --hl.env("GTK_IM_MODULE", "fcitx")

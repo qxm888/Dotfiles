@@ -1,0 +1,6 @@
+[Unit]
+Description=Auto btrfs snapshots
+
+[Service]
+Type=oneshot
+ExecStart=/home/dovahkiin/.config/hypr/auto-snapshots.sh

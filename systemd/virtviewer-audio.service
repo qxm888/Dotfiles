@@ -1,0 +1,13 @@
+[Unit]
+Description=virt-viewer SPICE audio client
+After=xvfb-audio.service
+
+[Service]
+Type=simple
+Environment=DISPLAY=:1
+ExecStart=/usr/bin/virt-viewer --connect qemu:///system win11
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

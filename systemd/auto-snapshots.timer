@@ -1,0 +1,9 @@
+[Unit]
+Description=Weekly auto btrfs snapshots
+
+[Timer]
+OnCalendar=weekly
+Persistent=true
+
+[Install]
+WantedBy=timers.target
